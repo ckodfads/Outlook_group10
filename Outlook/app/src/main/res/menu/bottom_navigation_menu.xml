@@ -4,15 +4,19 @@
 
     <item
         android:id="@+id/home"
-        android:title="home"
+        android:title="@string/home"
+        android:icon="@drawable/home"
         />
     <item
-        android:id="@+id/chat"
-        android:title="chat"/>
+        android:id="@+id/contact"
+        android:title="@string/contact"
+        android:icon="@drawable/contact"/>
     <item
-        android:id="@+id/space"
-        android:title="space"/>
+        android:id="@+id/calendar"
+        android:title="@string/calendar"
+        android:icon="@drawable/calendar"/>
     <item
-        android:id="@+id/meet"
-        android:title="meet"/>
+        android:id="@+id/app_contact"
+        android:title="@string/app_contact"
+        android:icon="@drawable/app_contact"/>
 </menu>

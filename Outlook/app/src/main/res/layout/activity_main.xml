@@ -118,10 +118,10 @@
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:text="New mail"
             android:textAllCaps="false"
-            android:textColor="#F44336"
+            android:textColor="@color/white"
             android:backgroundTint="#FFFFFF"
-            app:icon="@drawable/ggicon"
-            app:iconTint="#F44336"
+            app:icon="@drawable/ic_compose"
+            app:iconTint="@color/white"
             android:id="@+id/Compose"
             android:layout_marginBottom="75dp"
             android:layout_width="wrap_content"

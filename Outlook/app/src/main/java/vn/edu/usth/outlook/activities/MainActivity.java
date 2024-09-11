@@ -33,15 +33,15 @@ import com.google.android.material.floatingactionbutton.ExtendedFloatingActionBu
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
-
-
 import java.util.ArrayList;
 import java.util.List;
-
 import vn.edu.usth.outlook.Email_Sender;
 import vn.edu.usth.outlook.KeyboardVisibilityUtils;
 import vn.edu.usth.outlook.R;
+import vn.edu.usth.outlook.fragment.AppContactFragment;
 import vn.edu.usth.outlook.fragment.ArchiveFragment;
+import vn.edu.usth.outlook.fragment.CalendarFragment;
+import vn.edu.usth.outlook.fragment.ContactFragment;
 import vn.edu.usth.outlook.fragment.DeletedFragment;
 import vn.edu.usth.outlook.fragment.DraftFragment;
 import vn.edu.usth.outlook.fragment.JunkFragment;
@@ -72,7 +72,6 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
     private Fragment currentFragment;
     String userid_sender;
     TextView textView;
-    ExtendedFloatingActionButton floatingActionButton;
 
 
 
@@ -88,6 +87,9 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
         window.setStatusBarColor(ContextCompat.getColor(this, R.color.background_all));
 
         setContentView(R.layout.activity_main);
+
+
+
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
@@ -98,6 +100,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         ImageView searchIcon = findViewById(R.id.search_icon);
         searchView = findViewById(R.id.search_view);
+
         searchIcon.bringToFront();
         // Set onClickListener for the search icon to toggle SearchView visibility
         searchIcon.setOnClickListener(v -> {
@@ -119,6 +122,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
             }
             return false;
         });
+        displayItems();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -156,6 +160,16 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
                     // If it's not open, open it
                     drawerLayout.openDrawer(GravityCompat.START);
                 }
+            }
+        });
+
+
+        compose_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ComposeActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
         // Side-bar navigation
@@ -214,8 +228,85 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
             }
         });
 
+        // Bottom bar navigation
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int itemId = item.getItemId();
+                textView_meetings.setText(R.string.meet);
+                textView_meetings.setTextColor(getResources().getColor(R.color.black));
+                textView_meetings.setTextSize(20);
+
+                boolean isMeetFragment = currentFragment instanceof AppContactFragment;
+
+                if (itemId == R.id.home) {
+                    isMeetItemSelected = false;
+                    recyclerView.setVisibility(View.VISIBLE);
+                    searchView.setVisibility(View.VISIBLE);
+                    searchView.setQueryHint(getString(R.string.search_in_mail));
+                    compose_button.setText(R.string.compose);
+                    compose_button.setIconResource(R.drawable.ic_compose);
+                    compose_button.setVisibility(View.VISIBLE);
+                    toolbar.removeView(textView_meetings);
+                    openFragment(new InboxFragment());
+                    return true;
+                } else if (itemId == R.id.contact) {
+                    isMeetItemSelected = false;
+                    recyclerView.setVisibility(View.GONE);
+                    searchView.setVisibility(View.VISIBLE);
+                    searchView.setQueryHint(getString(R.string.search_in_chat_and_spaces));
+                    compose_button.setText(R.string.new_contact);
+                    compose_button.setVisibility(View.VISIBLE);
+                    toolbar.removeView(textView_meetings);
+                    openFragment(new ContactFragment());
+                    return true;
+                } else if (itemId == R.id.calendar) {
+                    isMeetItemSelected = false;
+                    recyclerView.setVisibility(View.GONE);
+                    searchView.setVisibility(View.VISIBLE);
+                    searchView.setQueryHint(getString(R.string.search_in_chat_and_spaces));
+                    compose_button.setText(R.string.new_space);
+                    compose_button.setIconResource(R.drawable.plus_compose);
+                    compose_button.setVisibility(View.VISIBLE);
+                    toolbar.removeView(textView_meetings);
+                    openFragment(new CalendarFragment());
+                    return true;
+                } else if (itemId == R.id.app_contact) {
+                    currentFragment = new AppContactFragment();
+                    isMeetItemSelected = true;
+                    recyclerView.setVisibility(View.GONE);
+                    searchView.setVisibility(View.GONE);
+                    compose_button.setVisibility(View.GONE);
+//                    toolbar.addView(textView_meetings, new Toolbar.LayoutParams(Toolbar.LayoutParams.WRAP_CONTENT, Toolbar.LayoutParams.WRAP_CONTENT, Gravity.CENTER));
+                    openFragment(new AppContactFragment());
+                    return true;
+                }
+
+                return false;
+            }
+        });
 
 
+        // Add a scroll listener to the RecyclerView
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+                if (dy > 0 && compose_button.isExtended()) {
+                    // Scrolling down, and FAB is extended, so shrink it
+                    compose_button.shrink();
+                    bottomAppBar.setVisibility(View.GONE);
+
+                } else if (dy < 0 && !compose_button.isExtended()) {
+                    // Scrolling up, and FAB is not extended, so extend it
+                    compose_button.extend();
+                    bottomAppBar.setVisibility(View.VISIBLE);
+
+                }
+            }
+        });
 
     }
     //  Search bar
@@ -257,6 +348,103 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
         }else{
             super.onBackPressed();
         }}
+
+
+    // Display items in RecyclerView
+    private void displayItems() {
+        recyclerView = findViewById(R.id.recycler_main);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 1));  // Single column grid (like list)
+
+        // Initialize email list
+        emailList = new ArrayList<>();
+        emailList.add(new Email_Sender("John Doe", "Meeting Tomorrow", "Don't forget about the meeting tomorrow at 10 AM.","John Doe"));
+        emailList.add(new Email_Sender("Jane Smith", "Project Update", "Here is the latest update on the project.", "John Doe"));
+
+        // Create adapter and set it to the RecyclerView
+        customAdapter = new CustomAdapter(this, emailList,this);
+        recyclerView.setAdapter(customAdapter);
+
+        // Optional: Add swipe-to-delete or other functionalities with ItemTouchHelper
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
+        itemTouchHelper.attachToRecyclerView(recyclerView);
+    }
+
+    //Swipe to do delete and archive
+    Email_Sender deletedMail = null;
+    List<String> archivedMail = new ArrayList<>();
+    ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            int position = viewHolder.getAdapterPosition();
+            switch (direction) {
+                case ItemTouchHelper.LEFT:
+                    // Handle left swipe (delete)
+                    deletedMail = emailList.get(position); // Get the deleted email
+                    emailList.remove(position); // Remove it from the list
+                    customAdapter.notifyItemRemoved(position); // Notify the adapter
+
+                    // Show a Snackbar with an undo option
+                    Snackbar.make(recyclerView, "Email deleted", Snackbar.LENGTH_LONG)
+                            .setAction("Undo", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    // User clicked "Undo," so add the deleted email back to the list
+                                    if (deletedMail != null) {
+                                        emailList.add(position, deletedMail);
+                                        customAdapter.notifyItemInserted(position);
+                                    }
+                                }
+                            }).show();
+                    break;
+                case ItemTouchHelper.RIGHT:
+                    final Email_Sender email = emailList.get(position); // Corrected variable name
+                    archivedMail.add(String.valueOf(email)); // Use the correct list name
+                    emailList.remove(position);
+                    customAdapter.notifyItemRemoved(position);
+
+                    Snackbar make = Snackbar.make(recyclerView, email + ", Archived.", Snackbar.LENGTH_LONG);
+                    make.setAction("Undo", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            archivedMail.remove(archivedMail.lastIndexOf(email));
+                            emailList.add(position, email);
+                            customAdapter.notifyItemInserted(position);
+                        }
+                    });
+
+                    make.show();
+
+                    break;
+            }
+
+        }
+    };
+
+    @Override
+    public void onItemClicked(int position) {
+        Intent intent = new Intent(MainActivity.this, DetailMail.class);
+        intent.putExtra("Name", emailList.get(position).getSender());
+        intent.putExtra("Head Mail", emailList.get(position).getSubject());
+        intent.putExtra("Me", emailList.get(position).getReceiver());
+        intent.putExtra("Content", emailList.get(position).getContent());
+        intent.putExtra("position", position);
+        startActivity(intent);
+    }
+
+//    @Override
+//    public void onItemClicked(int position) {
+//        Intent intent = new Intent(MainActivity.this, Detail_1.class);
+//        intent.putExtra("position", position);
+//        startActivity(intent);
+//    }
+
+
     @Override
     public void onLongItemClick(int position) {
 
@@ -267,6 +455,6 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, fragment);
         transaction.commit();
-
     }
+
 }

@@ -10,29 +10,38 @@
                     <item
                         android:id="@+id/inbox"
                         android:title="Inbox"
-                        android:visible="true"/>
+                        android:visible="true"
+                        android:icon="@drawable/inbox"/>
                     <item
                         android:id="@+id/draft"
                         android:title="Drafts"
+                        android:icon="@drawable/draft"
                         />
                     <item
                         android:id="@+id/archive"
-                        android:title="Archive"/>
+                        android:title="Archive"
+                        android:icon="@drawable/archive"/>
                     <item
                         android:id="@+id/junk"
-                        android:title="Junk"/>
+                        android:title="Junk"
+                        android:icon="@drawable/junk"/>
                     <item
                         android:id="@+id/sent"
-                        android:title="Sent"/>
+                        android:title="Sent"
+                        android:icon="@drawable/sent"/>
                     <item
                         android:id="@+id/deleted"
-                        android:title="Deleted"/>
+                        android:title="Deleted"
+                        android:icon="@drawable/deleted"/>
                     <item
                         android:id="@+id/unwanted"
-                        android:title="Unwanted"/>
+                        android:title="Unwanted"
+                        android:icon="@drawable/unwanted"/>
                     <item
                         android:id="@+id/settings"
-                        android:title="Settings"/>
+                        android:title="Settings"
+                        android:icon="@drawable/setting"/>
+
 
                 </group>
             </menu>

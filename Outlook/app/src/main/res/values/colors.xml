@@ -8,5 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red">#FF1100</color>
-    <color name="background_all">#000000</color>
+    <color name="background_all">#FAFBFC</color>
+    <color name="blue_theme">#0384FC</color>
+    <color name="character_in_theme">#FAF9FD</color>
+    <color name="character_in_sidebar">#656C85</color>
+    <color name="character_in_theme_if_background_white">#033ffc</color>
 </resources>

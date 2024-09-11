@@ -4,18 +4,15 @@
 
     <item
         android:id="@+id/home"
-        android:title="mail"
-        android:icon="@drawable/ic_letter" />
+        android:title="home"
+        />
     <item
         android:id="@+id/chat"
-        android:title="contact"
-        android:icon="@drawable/ic_contact" />
+        android:title="chat"/>
     <item
         android:id="@+id/space"
-        android:title="calendar"
-        android:icon="@drawable/ic_calendar" />
+        android:title="space"/>
     <item
         android:id="@+id/meet"
-        android:title="apps"
-        android:icon="@drawable/ic_app" />
+        android:title="meet"/>
 </menu>

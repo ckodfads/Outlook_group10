@@ -1,0 +1,10 @@
+<!-- res/drawable/nav_item_background.xml -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Item is pressed/focused/selected -->
+    <item android:drawable="@drawable/rounded_item_selected" android:state_pressed="true" />
+    <item android:drawable="@drawable/rounded_item_selected" android:state_focused="true" />
+    <item android:drawable="@drawable/rounded_item_selected" android:state_checked="true" />
+
+    <!-- Default state -->
+    <item android:drawable="@android:color/transparent" />
+</selector>

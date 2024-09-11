@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <item
+            android:title="Favourites"
+            android:icon="@drawable/ggicon">
+
+            <menu>
+                <group android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/inbox"
+                        android:title="Inbox"
+                        android:visible="true"/>
+                    <item
+                        android:id="@+id/draft"
+                        android:title="Drafts"
+                        />
+                    <item
+                        android:id="@+id/archive"
+                        android:title="Archive"/>
+                    <item
+                        android:id="@+id/junk"
+                        android:title="Junk"/>
+                    <item
+                        android:id="@+id/sent"
+                        android:title="Sent"/>
+                    <item
+                        android:id="@+id/deleted"
+                        android:title="Deleted"/>
+                    <item
+                        android:id="@+id/unwanted"
+                        android:title="Unwanted"/>
+
+                </group>
+            </menu>
+        </item>
+</menu>

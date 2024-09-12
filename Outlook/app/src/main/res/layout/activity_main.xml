@@ -35,42 +35,45 @@
                     app:cardBackgroundColor="@color/blue_theme"
                     app:cardElevation="2dp"
                     app:cardUseCompatPadding="true">
-
-                    <!-- Toolbar -->
                     <com.google.android.material.appbar.MaterialToolbar
                         android:id="@+id/toolbar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        app:layout_scrollFlags="scroll"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_scrollFlags="scroll"
                         app:navigationIcon="@drawable/ggicon">
-                        <!-- Icon to trigger the SearchView expansion -->
-                        <ImageView
-                            android:id="@+id/search_icon"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_gravity="end"
-                            android:clickable="true"
-                            android:contentDescription="search"
-                            android:focusable="true"
-                            android:padding="10dp"
-                            android:src="@drawable/ic_find_mail"
-                            />
-                        <!-- SearchView (initially hidden) -->
-                        <androidx.appcompat.widget.SearchView
-                            android:id="@+id/search_view"
-                            android:layout_width="300dp"
-                            android:layout_height="48dp"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginEnd="8dp"
-                            android:iconifiedByDefault="false"
-                            android:visibility="gone"
-                            app:iconifiedByDefault="false"
-                            app:queryHint="Mail,Events,People,Files"
-                            app:searchIcon="@null" />
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <!-- Icon to trigger the SearchView expansion -->
+                            <ImageView
+                                android:id="@+id/search_icon"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:padding="10dp"
+                                android:src="@drawable/ic_find_mail"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_gravity="end"
+                                android:contentDescription="search"/>
+                            <!-- SearchView (initially hidden) -->
+                            <androidx.appcompat.widget.SearchView
+                                android:id="@+id/search_view"
+                                android:layout_width="300dp"
+                                android:layout_height="48dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_centerHorizontal="true"
+                                android:visibility="gone"
+                                app:queryHint="@string/search_in_mail"
+                                app:iconifiedByDefault="false"
+                                android:iconifiedByDefault="false"
+                                app:searchIcon="@null"/>
+
+                        </RelativeLayout>
                     </com.google.android.material.appbar.MaterialToolbar>
                 </androidx.cardview.widget.CardView>
             </androidx.constraintlayout.widget.ConstraintLayout>

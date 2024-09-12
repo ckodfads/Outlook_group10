@@ -125,13 +125,9 @@ public class DetailMail extends AppCompatActivity implements PopupMenu.OnMenuIte
 
 
 //        // Add email data to the list
-        emailSenderList.add(new Email_Sender("John Doe", "Meeting Tomorrow", "Don't forget about the meeting tomorrow at 10 AM.","John Doe"));
-        emailSenderList.add(new Email_Sender("Jane Smith", "Project Update", "Here is the latest update on the project.", "John Doe"));
-        emailSenderList.add(new Email_Sender("hellobaby@gmail.com", "Hello World", "Go out tonight?",  "me"));
-        emailSenderList.add(new Email_Sender("hellobaby@gmail.com", "CHECK ATTENDANCE LIST", "Find your name in the Excel file below", "me"));
-        emailSenderList.add(new Email_Sender("hellobaby@gmail.com", "INTERNSHIP", "Urgent to find a company", "me"));
-        emailSenderList.add(new Email_Sender("nam@gmail.com", "xin chào buoi sang", "cam on phan anh nhé hhehe", "me"));
-        emailSenderList.add(new Email_Sender("nam@gmail.com", "Mon nay kho qua", "bon em da rat co gang", "me"));
+        emailSenderList.add(new Email_Sender("user1@example.com", "Do sth", "Subject 1", "Content of email 1"));
+        emailSenderList.add(new Email_Sender("user2@example.com", "Make sth", "Subject 2", "Content of email 2"));
+        emailSenderList.add(new Email_Sender("user3@example.com", "Play sth", "Subject 3", "Content of email 3"));
 
 
         return emailSenderList;

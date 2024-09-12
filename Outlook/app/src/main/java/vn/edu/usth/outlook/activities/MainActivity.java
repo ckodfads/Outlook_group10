@@ -100,6 +100,8 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         ImageView searchIcon = findViewById(R.id.search_icon);
         searchView = findViewById(R.id.search_view);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         searchIcon.bringToFront();
         // Set onClickListener for the search icon to toggle SearchView visibility
@@ -179,13 +181,14 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
                 drawerLayout.closeDrawer(GravityCompat.START);
                 if (item.getItemId() == R.id.inbox){
                     recyclerView.setVisibility(View.VISIBLE);
-
+                    getSupportActionBar().setTitle("Inbox");
                     openFragment(new InboxFragment());
                     return true;
                 }
                 else if (item.getItemId() == R.id.draft){
                     recyclerView.setVisibility(View.GONE);
                     openFragment(new DraftFragment());
+                    getSupportActionBar().setTitle("Draft");
                     return true;
                 }
                 else if (item.getItemId() == R.id.settings){

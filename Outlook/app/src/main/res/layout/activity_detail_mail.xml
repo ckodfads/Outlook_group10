@@ -1,10 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.DetailMail">
+    android:orientation="vertical"
+    android:id="@+id/detail1"
+    android:background="@color/background_all">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="20dp"
+        android:id="@+id/header"
+        android:background="@color/blue_theme">
+
+
+        <ImageButton
+            android:id="@+id/back_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/row_back"
+            android:layout_marginLeft="12dp"/>
+
+        <ImageButton
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="@drawable/more_vert"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/more_vert"
+            android:onClick="morevertPopup" />
+
+
+        <ImageButton
+            android:id="@+id/emailSender"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:layout_marginHorizontal="16dp"
+            android:layout_toStartOf="@+id/more_vert"
+            android:background="@drawable/archive"
+            />
+
+        <ImageButton
+            android:id="@+id/delete"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/emailSender"
+            android:layout_marginHorizontal="4dp"
+            android:background="@drawable/ic_delete"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/pressed_in_whitebg">
+
+        <TextView
+            android:id="@+id/D_head_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="HELLOOO"
+            android:textSize="22dp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/D_imageview"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_centerVertical="true"
+
+            android:src="@drawable/account_circle" />
+
+        <TextView
+            android:id="@+id/D_name"
+            android:layout_width="wrap_content"
+            android:layout_height="26dp"
+            android:layout_marginLeft="85dp"
+            android:layout_marginTop="20dp"
+            android:text="Long"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/D_time"
+                android:text="9:00"
+                />
+
+            <TextView
+                android:id="@+id/toW"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/D_name"
+                android:layout_marginStart="85dp"
+                android:text="nhutunglama1@gmail.com" />
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/more_vert"
+            android:id="@+id/more"
+            android:background="@color/white"
+            android:contentDescription="More"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:onClick="morePopup"/>
+        </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/D_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="16dp"
+            android:fadeScrollbars="false"
+            android:padding="8dp"
+            android:scrollbars="vertical"
+            android:text="hello"
+            android:textSize="16sp" />
+
+    </ScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/reply_button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:drawableStart="@drawable/turn_left"
+            android:text="@string/Reply"
+            android:textAlignment="textStart"
+            android:drawablePadding="15dp"
+            android:textSize="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.64"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.711" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>

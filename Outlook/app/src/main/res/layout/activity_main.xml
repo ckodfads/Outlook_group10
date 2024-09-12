@@ -32,8 +32,7 @@
                     android:id="@+id/cardView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:cardBackgroundColor="@color/background_all"
-                    app:cardCornerRadius="4dp"
+                    app:cardBackgroundColor="@color/blue_theme"
                     app:cardElevation="2dp"
                     app:cardUseCompatPadding="true">
 
@@ -41,7 +40,7 @@
                     <com.google.android.material.appbar.MaterialToolbar
                         android:id="@+id/toolbar"
                         android:layout_width="match_parent"
-                        android:layout_height="100dp"
+                        android:layout_height="wrap_content"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -50,15 +49,16 @@
                         <!-- Icon to trigger the SearchView expansion -->
                         <ImageView
                             android:id="@+id/search_icon"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
                             android:layout_alignParentEnd="true"
                             android:layout_gravity="end"
                             android:clickable="true"
                             android:contentDescription="search"
                             android:focusable="true"
                             android:padding="10dp"
-                            android:src="@drawable/ic_find_mail" />
+                            android:src="@drawable/ic_find_mail"
+                            />
                         <!-- SearchView (initially hidden) -->
                         <androidx.appcompat.widget.SearchView
                             android:id="@+id/search_view"
@@ -102,24 +102,25 @@
             android:layout_gravity="bottom"
             app:fabCradleMargin="10dp"
             app:fabCradleRoundedCornerRadius="50dp"
-            >
+            app:hideOnScroll="true">
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/bottom_navigation"
                 app:labelVisibilityMode="unlabeled"
-                app:menu="@menu/bottom_navigation_menu"
-                android:background="@android:color/transparent"
-                />
+            app:menu="@menu/bottom_navigation_menu"
+            android:background="@android:color/transparent"/>
         </com.google.android.material.bottomappbar.BottomAppBar>
 
 
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:text="New mail"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:backgroundTint="#FFFFFF"
+            android:backgroundTint="@color/blue_theme"
             app:icon="@drawable/ic_compose"
             app:iconTint="@color/white"
             android:id="@+id/Compose"

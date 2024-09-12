@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="Move to folder"
+        android:id="@+id/move_to_folder"/>
+    <item
+        android:title="Move to Other"
+        android:id="@+id/move_to_other"/>
+    <item
+        android:title="Report junk"
+        android:id="@+id/report_junk"/>
+    <item
+        android:title="Ignore conversation"
+        android:id="@+id/ignore_conversation"/>
+    <item
+        android:title="Forward as attachment"
+        android:id="@+id/forward_as_attachment"/>
+    <item
+        android:title="Mark as unread"
+        android:id="@+id/mark_as_unread"/>
+    <item
+        android:title="Frag"
+        android:id="@+id/frag"/>
+    <item
+        android:title="Pin"
+        android:id="@+id/pin"/>
+    <item
+        android:title="Snooze"
+        android:id="@+id/snooze"/>
+</menu>

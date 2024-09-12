@@ -14,5 +14,6 @@
     <string name="search_in_chat_and_spaces">search in chat and space\n</string>
     <string name="new_space">new space</string>
     <string name="app_contact">app contact</string>
+    <string name="Reply">Reply</string>
 
 </resources>

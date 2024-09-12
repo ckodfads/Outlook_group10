@@ -12,19 +12,15 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import vn.edu.usth.outlook.Email_Sender;
-import vn.edu.usth.outlook.R;
 import vn.edu.usth.outlook.listener.OnSwipeTouchListener;
+import vn.edu.usth.outlook.R;
 
 public class DetailMail extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
@@ -78,6 +74,7 @@ public class DetailMail extends AppCompatActivity implements PopupMenu.OnMenuIte
                 finish();
             }
         });
+
         //popup more
         ImageButton popupButton2 = findViewById(R.id.more);
         popupButton2.setOnClickListener(new View.OnClickListener() {
@@ -130,6 +127,11 @@ public class DetailMail extends AppCompatActivity implements PopupMenu.OnMenuIte
 //        // Add email data to the list
         emailSenderList.add(new Email_Sender("John Doe", "Meeting Tomorrow", "Don't forget about the meeting tomorrow at 10 AM.","John Doe"));
         emailSenderList.add(new Email_Sender("Jane Smith", "Project Update", "Here is the latest update on the project.", "John Doe"));
+        emailSenderList.add(new Email_Sender("hellobaby@gmail.com", "Hello World", "Go out tonight?",  "me"));
+        emailSenderList.add(new Email_Sender("hellobaby@gmail.com", "CHECK ATTENDANCE LIST", "Find your name in the Excel file below", "me"));
+        emailSenderList.add(new Email_Sender("hellobaby@gmail.com", "INTERNSHIP", "Urgent to find a company", "me"));
+        emailSenderList.add(new Email_Sender("nam@gmail.com", "xin chào buoi sang", "cam on phan anh nhé hhehe", "me"));
+        emailSenderList.add(new Email_Sender("nam@gmail.com", "Mon nay kho qua", "bon em da rat co gang", "me"));
 
 
         return emailSenderList;
@@ -140,12 +142,15 @@ public class DetailMail extends AppCompatActivity implements PopupMenu.OnMenuIte
         popup.inflate(R.menu.options_head);
         popup.show();
     }
+
+
     public void morevertPopup(View view){
         PopupMenu popup = new PopupMenu(this, view);
         popup.setOnMenuItemClickListener(this);
         popup.inflate(R.menu.options_more_vert);
         popup.show();
     }
+
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {

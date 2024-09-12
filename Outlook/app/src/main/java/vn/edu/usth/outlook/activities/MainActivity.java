@@ -24,6 +24,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -66,13 +67,9 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
     BottomAppBar bottomAppBar;
     BottomNavigationView bottomNavigationView;
     KeyboardVisibilityUtils keyboardVisibilityUtils;
-    EditText editText;
     SearchView searchView;
     SwipeRefreshLayout swipeRefreshLayout;
     private Fragment currentFragment;
-    String userid_sender;
-    TextView textView;
-
 
 
     private boolean isMeetItemSelected = false;
@@ -87,7 +84,6 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
         window.setStatusBarColor(ContextCompat.getColor(this, R.color.background_all));
 
         setContentView(R.layout.activity_main);
-
 
 
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -108,12 +104,10 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
         searchIcon.setOnClickListener(v -> {
             if (searchView.getVisibility() == View.GONE) {
                 searchView.setVisibility(View.VISIBLE);
-                searchView.requestFocus();// Focus on the SearchView when it becomes visible
-                textView.setVisibility(View.GONE);
+                searchView.requestFocus();
             } else {
                 searchView.setVisibility(View.GONE);
                 searchView.clearFocus();
-                textView.setVisibility(View.VISIBLE);
             }
         });
         searchIcon.setOnTouchListener((v, event) -> {
@@ -179,50 +173,42 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 drawerLayout.closeDrawer(GravityCompat.START);
-                if (item.getItemId() == R.id.inbox){
+                if (item.getItemId() == R.id.inbox) {
                     recyclerView.setVisibility(View.VISIBLE);
                     getSupportActionBar().setTitle("Inbox");
                     openFragment(new InboxFragment());
                     return true;
-                }
-                else if (item.getItemId() == R.id.draft){
+                } else if (item.getItemId() == R.id.draft) {
                     recyclerView.setVisibility(View.GONE);
                     openFragment(new DraftFragment());
                     getSupportActionBar().setTitle("Draft");
                     return true;
-                }
-                else if (item.getItemId() == R.id.settings){
+                } else if (item.getItemId() == R.id.settings) {
                     recyclerView.setVisibility(View.GONE);
                     compose_button.setVisibility(View.GONE);
                     openFragment(new SettingsFragment());
                     return true;
-                }
-                else if (item.getItemId() == R.id.sent){
+                } else if (item.getItemId() == R.id.sent) {
                     recyclerView.setVisibility(View.GONE);
                     openFragment(new SentFragment());
                     return true;
-                }
-                else if (item.getItemId() == R.id.archive){
+                } else if (item.getItemId() == R.id.archive) {
                     recyclerView.setVisibility(View.VISIBLE);
                     openFragment(new ArchiveFragment());
                     return true;
-                }
-                else if (item.getItemId() == R.id.junk){
+                } else if (item.getItemId() == R.id.junk) {
                     recyclerView.setVisibility(View.GONE);
                     openFragment(new JunkFragment());
                     return true;
-                }
-                else if (item.getItemId() == R.id.sent){
+                } else if (item.getItemId() == R.id.sent) {
                     recyclerView.setVisibility(View.GONE);
                     openFragment(new SentFragment());
                     return true;
-                }
-                else if (item.getItemId() == R.id.deleted){
+                } else if (item.getItemId() == R.id.deleted) {
                     recyclerView.setVisibility(View.GONE);
                     openFragment(new DeletedFragment());
                     return true;
-                }
-                else if (item.getItemId() == R.id.unwanted){
+                } else if (item.getItemId() == R.id.unwanted) {
                     recyclerView.setVisibility(View.GONE);
                     openFragment(new UnwantedFragment());
                     return true;
@@ -255,7 +241,6 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
                     openFragment(new InboxFragment());
                     return true;
                 } else if (itemId == R.id.contact) {
-                    isMeetItemSelected = false;
                     recyclerView.setVisibility(View.GONE);
                     searchView.setVisibility(View.VISIBLE);
                     searchView.setQueryHint(getString(R.string.search_in_chat_and_spaces));
@@ -272,7 +257,6 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
                     compose_button.setText(R.string.new_space);
                     compose_button.setIconResource(R.drawable.plus_compose);
                     compose_button.setVisibility(View.VISIBLE);
-                    toolbar.removeView(textView_meetings);
                     openFragment(new CalendarFragment());
                     return true;
                 } else if (itemId == R.id.app_contact) {
@@ -312,11 +296,12 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
         });
 
     }
+
     //  Search bar
     private void filter(String newText) {
         List<Email_Sender> filteredList = new ArrayList<>();
-        for (Email_Sender item : emailList){
-            if (item.getSender().toLowerCase().startsWith(newText.toLowerCase())){
+        for (Email_Sender item : emailList) {
+            if (item.getSender().toLowerCase().startsWith(newText.toLowerCase())) {
                 filteredList.add(item);
             }
         }
@@ -333,24 +318,24 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
         } else {
             // Keyboard is closed, show the BottomAppBar and FAB
             bottomAppBar.setVisibility(View.VISIBLE);
-            if (isMeetItemSelected == true){
+            if (isMeetItemSelected == true) {
                 compose_button.setVisibility(View.GONE);
-            }
-            else{
+            } else {
                 compose_button.setVisibility(View.VISIBLE);
             }
 
-        }}
-
+        }
+    }
 
 
     @Override
     public void onBackPressed() {
-        if(drawerLayout.isDrawerOpen((GravityCompat.START))){
+        if (drawerLayout.isDrawerOpen((GravityCompat.START))) {
             drawerLayout.closeDrawer(GravityCompat.START);
-        }else{
+        } else {
             super.onBackPressed();
-        }}
+        }
+    }
 
 
     // Display items in RecyclerView
@@ -361,17 +346,18 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
 
         // Initialize email list
         emailList = new ArrayList<>();
-        emailList.add(new Email_Sender("John Doe", "Meeting Tomorrow", "Don't forget about the meeting tomorrow at 10 AM.","John Doe"));
-        emailList.add(new Email_Sender("Jane Smith", "Project Update", "Here is the latest update on the project.", "John Doe"));
+        emailList.add(new Email_Sender("user1@example.com", "user2@example.com", "Subject 1", "Content of email 1"));
+        emailList.add(new Email_Sender("user2@example.com", "user1@example.com", "Subject 2", "Content of email 2"));
+        emailList.add(new Email_Sender("user3@example.com", "user1@example.com", "Subject 3", "Content of email 3"));
 
-        // Create adapter and set it to the RecyclerView
-        customAdapter = new CustomAdapter(this, emailList,this);
-        recyclerView.setAdapter(customAdapter);
-
-        // Optional: Add swipe-to-delete or other functionalities with ItemTouchHelper
-        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
-        itemTouchHelper.attachToRecyclerView(recyclerView);
     }
+
+    // Hàm để thêm email mới vào inbox từ ComposeActivity
+    public void addEmailToInbox(Email_Sender email) {
+        emailList.add(email);
+        customAdapter.notifyItemInserted(emailList.size() - 1); // Cập nhật RecyclerView khi có email mới
+    }
+
 
     //Swipe to do delete and archive
     Email_Sender deletedMail = null;

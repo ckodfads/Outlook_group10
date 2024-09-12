@@ -27,6 +27,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
         this.listener = listener;
     }
 
+    public CustomAdapter(List<Email_Sender> emailList, SelectListener listener) {
+        this.listener = listener;
+    }
+
     @NonNull
     @Override
     public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

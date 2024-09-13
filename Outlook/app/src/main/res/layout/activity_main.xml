@@ -106,8 +106,9 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/bottom_navigation"
                 app:labelVisibilityMode="unlabeled"
-            app:menu="@menu/bottom_navigation_menu"
-            android:background="@android:color/transparent"/>
+                app:menu="@menu/bottom_navigation_menu"
+                style="@style/NavigationDrawerStyle"
+                android:background="@android:color/transparent"/>
         </com.google.android.material.bottomappbar.BottomAppBar>
 
 
@@ -141,7 +142,7 @@
         app:menu="@menu/menu_sidebar"
         app:itemBackground="@drawable/nav_item_background"
         app:headerLayout="@layout/nav_header"
-
+        style="@style/NavigationDrawerStyle"
         />
 
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -22,24 +22,19 @@
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:background="@color/blue_theme"
+            >
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/background_all">
-                <!-- CardView -->
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:cardBackgroundColor="@color/blue_theme"
-                    app:cardElevation="2dp"
-                    app:cardUseCompatPadding="true">
+                android:layout_height="match_parent">
+
+
                     <com.google.android.material.appbar.MaterialToolbar
                         android:id="@+id/toolbar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                         app:layout_scrollFlags="scroll"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -48,7 +43,6 @@
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
-
                             <!-- Icon to trigger the SearchView expansion -->
                             <ImageView
                                 android:id="@+id/search_icon"
@@ -76,7 +70,6 @@
 
                         </RelativeLayout>
                     </com.google.android.material.appbar.MaterialToolbar>
-                </androidx.cardview.widget.CardView>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -148,6 +141,7 @@
         app:menu="@menu/menu_sidebar"
         app:itemBackground="@drawable/nav_item_background"
         app:headerLayout="@layout/nav_header"
+
         />
 
 </androidx.drawerlayout.widget.DrawerLayout>

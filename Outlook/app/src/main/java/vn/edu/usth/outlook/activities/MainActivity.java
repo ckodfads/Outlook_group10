@@ -28,6 +28,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
@@ -68,7 +69,6 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
     BottomNavigationView bottomNavigationView;
     KeyboardVisibilityUtils keyboardVisibilityUtils;
     SearchView searchView;
-    SwipeRefreshLayout swipeRefreshLayout;
     private Fragment currentFragment;
 
 
@@ -97,7 +97,8 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
         ImageView searchIcon = findViewById(R.id.search_icon);
         searchView = findViewById(R.id.search_view);
         Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.ggicon);
+
 
         searchIcon.bringToFront();
         // Set onClickListener for the search icon to toggle SearchView visibility
@@ -131,9 +132,6 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
                 return true;
             }
         });
-
-        TextView textView_meetings = new TextView(this);
-
         // Enable the Menu Icon to toggle the Menu Bar
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
@@ -173,44 +171,44 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 drawerLayout.closeDrawer(GravityCompat.START);
+
                 if (item.getItemId() == R.id.inbox) {
                     recyclerView.setVisibility(View.VISIBLE);
                     getSupportActionBar().setTitle("Inbox");
-                    openFragment(new InboxFragment());
+                    openFragment(new InboxFragment(),"Inbox");
                     return true;
                 } else if (item.getItemId() == R.id.draft) {
                     recyclerView.setVisibility(View.GONE);
-                    openFragment(new DraftFragment());
-                    getSupportActionBar().setTitle("Draft");
+                    openFragment(new DraftFragment(),"Draft");
                     return true;
                 } else if (item.getItemId() == R.id.settings) {
                     recyclerView.setVisibility(View.GONE);
                     compose_button.setVisibility(View.GONE);
-                    openFragment(new SettingsFragment());
+                    openFragment(new SettingsFragment(),"Settings");
                     return true;
                 } else if (item.getItemId() == R.id.sent) {
                     recyclerView.setVisibility(View.GONE);
-                    openFragment(new SentFragment());
+                    openFragment(new SentFragment(),"Sent");
                     return true;
                 } else if (item.getItemId() == R.id.archive) {
                     recyclerView.setVisibility(View.VISIBLE);
-                    openFragment(new ArchiveFragment());
+                    openFragment(new ArchiveFragment(),"Archive");
                     return true;
                 } else if (item.getItemId() == R.id.junk) {
                     recyclerView.setVisibility(View.GONE);
-                    openFragment(new JunkFragment());
+                    openFragment(new JunkFragment(),"Junk");
                     return true;
                 } else if (item.getItemId() == R.id.sent) {
                     recyclerView.setVisibility(View.GONE);
-                    openFragment(new SentFragment());
+                    openFragment(new SentFragment(),"Sent");
                     return true;
                 } else if (item.getItemId() == R.id.deleted) {
                     recyclerView.setVisibility(View.GONE);
-                    openFragment(new DeletedFragment());
+                    openFragment(new DeletedFragment(),"Deleted");
                     return true;
                 } else if (item.getItemId() == R.id.unwanted) {
                     recyclerView.setVisibility(View.GONE);
-                    openFragment(new UnwantedFragment());
+                    openFragment(new UnwantedFragment(),"Unwanted");
                     return true;
                 }
                 return false;
@@ -223,12 +221,6 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int itemId = item.getItemId();
-                textView_meetings.setText(R.string.meet);
-                textView_meetings.setTextColor(getResources().getColor(R.color.black));
-                textView_meetings.setTextSize(20);
-
-                boolean isMeetFragment = currentFragment instanceof AppContactFragment;
-
                 if (itemId == R.id.home) {
                     isMeetItemSelected = false;
                     recyclerView.setVisibility(View.VISIBLE);
@@ -237,8 +229,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
                     compose_button.setText(R.string.compose);
                     compose_button.setIconResource(R.drawable.ic_compose);
                     compose_button.setVisibility(View.VISIBLE);
-                    toolbar.removeView(textView_meetings);
-                    openFragment(new InboxFragment());
+                    openFragment(new InboxFragment(),"Inbox");
                     return true;
                 } else if (itemId == R.id.contact) {
                     recyclerView.setVisibility(View.GONE);
@@ -246,8 +237,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
                     searchView.setQueryHint(getString(R.string.search_in_chat_and_spaces));
                     compose_button.setText(R.string.new_contact);
                     compose_button.setVisibility(View.VISIBLE);
-                    toolbar.removeView(textView_meetings);
-                    openFragment(new ContactFragment());
+                    openFragment(new ContactFragment(),"Contact");
                     return true;
                 } else if (itemId == R.id.calendar) {
                     isMeetItemSelected = false;
@@ -257,7 +247,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
                     compose_button.setText(R.string.new_space);
                     compose_button.setIconResource(R.drawable.plus_compose);
                     compose_button.setVisibility(View.VISIBLE);
-                    openFragment(new CalendarFragment());
+                    openFragment(new CalendarFragment(),"Calendar");
                     return true;
                 } else if (itemId == R.id.app_contact) {
                     currentFragment = new AppContactFragment();
@@ -265,8 +255,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
                     recyclerView.setVisibility(View.GONE);
                     searchView.setVisibility(View.GONE);
                     compose_button.setVisibility(View.GONE);
-//                    toolbar.addView(textView_meetings, new Toolbar.LayoutParams(Toolbar.LayoutParams.WRAP_CONTENT, Toolbar.LayoutParams.WRAP_CONTENT, Gravity.CENTER));
-                    openFragment(new AppContactFragment());
+                    openFragment(new AppContactFragment(),"App Contact");
                     return true;
                 }
 
@@ -426,24 +415,20 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
         startActivity(intent);
     }
 
-//    @Override
-//    public void onItemClicked(int position) {
-//        Intent intent = new Intent(MainActivity.this, Detail_1.class);
-//        intent.putExtra("position", position);
-//        startActivity(intent);
-//    }
-
-
     @Override
     public void onLongItemClick(int position) {
 
     }
 
 
-    private void openFragment(Fragment fragment){
+    private void openFragment(Fragment fragment,String title) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, fragment);
         transaction.commit();
-    }
 
+        // Set the toolbar title dynamically based on the fragment being opened
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(title);
+        }
+    }
 }

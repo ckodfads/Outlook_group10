@@ -5,6 +5,12 @@
     android:layout_height="match_parent"
     tools:context=".fragment.DeletedFragment">
 
-
+    <ImageView
+        android:layout_width="236dp"
+        android:layout_height="492dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/nothing_in_deleted"
+        android:textSize="50sp" />
 
 </FrameLayout>

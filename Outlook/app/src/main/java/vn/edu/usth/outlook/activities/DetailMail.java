@@ -10,7 +10,6 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -63,35 +62,22 @@ public class DetailMail extends AppCompatActivity implements PopupMenu.OnMenuIte
         //back to mainpage
 
         ImageButton backIcon = findViewById(R.id.back_icon);
-        backIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Create an Intent to navigate to the previous activity or fragment
-                Intent intent = new Intent(DetailMail.this, MainActivity.class);
-                startActivity(intent);
+        backIcon.setOnClickListener(v -> {
+            // Create an Intent to navigate to the previous activity or fragment
+            Intent intent = new Intent(DetailMail.this, MainActivity.class);
+            startActivity(intent);
 
-                // Optionally, finish the current activity to remove it from the stack
-                finish();
-            }
+            // Optionally, finish the current activity to remove it from the stack
+            finish();
         });
 
         //popup more
         ImageButton popupButton2 = findViewById(R.id.more);
-        popupButton2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                morePopup(view);
-            }
-        });
+        popupButton2.setOnClickListener(this::morePopup);
 
         //popup more_vert
         ImageButton popupButton3 = findViewById(R.id.more_vert);
-        popupButton3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                morevertPopup(view);
-            }
-        });
+        popupButton3.setOnClickListener(this::morevertPopup);
 
         // swipe to left or right
         LinearLayout swappable = findViewById(R.id.detail1);

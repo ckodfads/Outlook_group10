@@ -15,5 +15,14 @@
     <string name="new_space">new space</string>
     <string name="app_contact">app contact</string>
     <string name="Reply">Reply</string>
+    <string name="lam_nhu">lam nhu</string>
+    <string name="nhutunglam1_gmail_com">nhutunglam1@gmail.com</string>
+    <string name="mail_calendar">mail calendar</string>
+    <string name="block_external_images">block external images</string>
+    <string name="report_spam">report spam</string>
+    <string name="categories">categories</string>
+    <string name="reset_account">reset account</string>
+    <string name="remove_account">remove account</string>
+    <string name="avatar">avatar</string>
 
 </resources>

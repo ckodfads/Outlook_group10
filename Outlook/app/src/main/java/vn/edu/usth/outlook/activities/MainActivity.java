@@ -184,7 +184,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
                     openFragment(new SentFragment(),"Sent");
                     return true;
                 } else if (item.getItemId() == R.id.archive) {
-                    recyclerView.setVisibility(View.VISIBLE);
+                    recyclerView.setVisibility(View.INVISIBLE);
                     openFragment(new ArchiveFragment(),"Archive");
                     return true;
                 } else if (item.getItemId() == R.id.junk) {

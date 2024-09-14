@@ -67,8 +67,6 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
     private Fragment currentFragment;
 
 
-    private boolean isMeetItemSelected = false;
-
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -217,36 +215,33 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int itemId = item.getItemId();
                 if (itemId == R.id.home) {
-                    isMeetItemSelected = false;
                     recyclerView.setVisibility(View.VISIBLE);
-                    searchView.setVisibility(View.VISIBLE);
+                    searchView.setVisibility(View.INVISIBLE);
                     searchView.setQueryHint(getString(R.string.search_in_mail));
-                    compose_button.setText(R.string.compose);
+                    compose_button.setText(R.string.New_mail);
                     compose_button.setIconResource(R.drawable.ic_compose);
                     compose_button.setVisibility(View.VISIBLE);
                     openFragment(new InboxFragment(),"Inbox");
                     return true;
                 } else if (itemId == R.id.contact) {
                     recyclerView.setVisibility(View.GONE);
-                    searchView.setVisibility(View.VISIBLE);
+                    searchView.setVisibility(View.INVISIBLE);
                     searchView.setQueryHint(getString(R.string.search_in_chat_and_spaces));
+                    compose_button.setIconResource(R.drawable.plus_compose);
                     compose_button.setText(R.string.new_contact);
                     compose_button.setVisibility(View.VISIBLE);
                     openFragment(new ContactFragment(),"Contact");
                     return true;
                 } else if (itemId == R.id.calendar) {
-                    isMeetItemSelected = false;
                     recyclerView.setVisibility(View.GONE);
-                    searchView.setVisibility(View.VISIBLE);
-                    searchView.setQueryHint(getString(R.string.search_in_chat_and_spaces));
-                    compose_button.setText(R.string.new_space);
+                    searchView.setVisibility(View.GONE);
                     compose_button.setIconResource(R.drawable.plus_compose);
                     compose_button.setVisibility(View.VISIBLE);
+                    compose_button.setText(R.string.new_contact);
                     openFragment(new CalendarFragment(),"Calendar");
                     return true;
                 } else if (itemId == R.id.app_contact) {
                     currentFragment = new AppContactFragment();
-                    isMeetItemSelected = true;
                     recyclerView.setVisibility(View.GONE);
                     searchView.setVisibility(View.GONE);
                     compose_button.setVisibility(View.GONE);
@@ -302,13 +297,10 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
         } else {
             // Keyboard is closed, show the BottomAppBar and FAB
             bottomAppBar.setVisibility(View.VISIBLE);
-            if (isMeetItemSelected == true) {
-                compose_button.setVisibility(View.GONE);
-            } else {
                 compose_button.setVisibility(View.VISIBLE);
             }
 
-        }
+
     }
 
 
@@ -330,16 +322,19 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
 
         // Initialize email list
         emailList = new ArrayList<>();
-        emailList.add(new Email_Sender("user1@example.com", "Do sth", "Subject 1", "Content of email 1"));
-        emailList.add(new Email_Sender("user2@example.com", "Make sth", "Subject 2", "Content of email 2"));
-        emailList.add(new Email_Sender("user3@example.com", "Play sth", "Subject 3", "Content of email 3"));
+        emailList.add(new Email_Sender("user1@example.com", "Do sth", "Subject 1", "me"));
+        emailList.add(new Email_Sender("user2@example.com", "Make sth", "Subject 2", "Long"));
+        emailList.add(new Email_Sender("user3@example.com", "Play sth", "Subject 3", "me"));
 
-    }
 
-    // Hàm để thêm email mới vào inbox từ ComposeActivity
-    public void addEmailToInbox(Email_Sender email) {
-        emailList.add(email);
-        customAdapter.notifyItemInserted(emailList.size() - 1); // Cập nhật RecyclerView khi có email mới
+
+    // Create adapter and set it to the RecyclerView
+    customAdapter = new CustomAdapter(this, emailList,this);
+    recyclerView.setAdapter(customAdapter);
+
+    //Add swipe-to-delete or other functionalities with ItemTouchHelper
+    ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
+    itemTouchHelper.attachToRecyclerView(recyclerView);
     }
 
 

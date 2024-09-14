@@ -14,22 +14,20 @@
         android:layout_width="match_parent"
         android:layout_height="76dp"
         android:orientation="horizontal"
-        android:background="#ddd">
+        android:background="@color/blue_theme">
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/backBtn"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_weight="0.5"
-
-            android:padding="20dp"
-            android:scaleType="center"
-            app:srcCompat="@drawable/close" />
+            android:background="@color/blue_theme"
+            android:src="@drawable/close"/>
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:src="@drawable/ggicon"
             android:layout_gravity="center" />
 
@@ -61,13 +59,32 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="vertical">
-
-        <EditText
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:hint="To"
-            android:paddingHorizontal="10dp" />
-
+            android:layout_height="60dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="To"
+                android:layout_marginStart="8dp"
+                android:paddingTop="17dp"
+                android:textSize="20sp" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="40dp"
+                android:textSize="20sp"
+                android:inputType="textEmailAddress" />
+            <ImageButton
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/row_down"
+                android:contentDescription="Show BCC,CC"
+                android:background="@color/white"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:id="@+id/row_down"/>
+        </RelativeLayout>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -96,6 +113,7 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:backgroundTint="@color/white"
+            app:tint="@color/character_in_sidebar"
             android:padding="20dp"
             app:srcCompat="@drawable/plus_compose" />
 
@@ -105,6 +123,7 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:backgroundTint="@color/white"
+            app:tint="@color/character_in_sidebar"
             android:scaleType="center"
             app:srcCompat="@drawable/insert_photo" />
 
@@ -114,6 +133,7 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:backgroundTint="@color/white"
+            app:tint="@color/character_in_sidebar"
             android:padding="20dp"
             app:srcCompat="@drawable/insert_link" />
 
@@ -123,6 +143,7 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:backgroundTint="@color/white"
+            app:tint="@color/character_in_sidebar"
             android:padding="20dp"
             app:srcCompat="@drawable/font" />
 
@@ -133,6 +154,7 @@
             android:layout_weight="1"
             android:backgroundTint="@color/white"
             android:padding="20dp"
+            app:tint="@color/character_in_sidebar"
             app:srcCompat="@drawable/signature_create" />
 
         <ImageButton
@@ -142,16 +164,18 @@
             android:layout_weight="1"
             android:backgroundTint="@color/white"
             android:padding="20dp"
+            app:tint="@color/character_in_sidebar"
             app:srcCompat="@drawable/insert_invitation" />
 
         <ImageButton
-            android:id="@+id/send"
+            android:id="@+id/btnSend"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:backgroundTint="@color/white"
-            android:padding="20dp"
-            app:srcCompat="@drawable/send" />
+            android:background="@drawable/nav_item_background"
+            app:srcCompat="@drawable/send"
+            app:tint="@color/blue_theme"
+            android:tintMode="src_in"/>
     </LinearLayout>
 
 </LinearLayout>

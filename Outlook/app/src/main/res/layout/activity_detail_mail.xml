@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/detail1"
+    android:id="@+id/detailmail"
     android:background="@color/background_all">
 
     <RelativeLayout
@@ -24,15 +24,17 @@
             android:layout_centerVertical="true"
             android:background="@drawable/row_back"
             android:layout_marginLeft="12dp"/>
-
         <ImageButton
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:background="@drawable/more_vert"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/more_vert"
+            android:id="@+id/more"
+            android:background="@drawable/nav_item_background"
+            android:contentDescription="More"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:id="@+id/more_vert"
-            android:onClick="morevertPopup" />
+            android:onClick="morePopup"/>
+
 
 
         <ImageButton
@@ -41,7 +43,7 @@
             android:layout_height="24dp"
             android:layout_centerVertical="true"
             android:layout_marginHorizontal="16dp"
-            android:layout_toStartOf="@+id/more_vert"
+            android:layout_toStartOf="@+id/more"
             android:background="@drawable/archive"
             />
 
@@ -52,7 +54,8 @@
             android:layout_centerVertical="true"
             android:layout_toStartOf="@+id/emailSender"
             android:layout_marginHorizontal="4dp"
-            android:background="@drawable/ic_delete"/>
+            android:background="@drawable/nav_item_background"
+            android:src="@drawable/ic_delete"/>
 
     </RelativeLayout>
 
@@ -106,16 +109,14 @@
                 android:layout_below="@+id/D_name"
                 android:layout_marginStart="85dp"
                 android:text="nhutunglama1@gmail.com" />
-        <ImageButton
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/more_vert"
-            android:id="@+id/more"
-            android:background="@color/white"
-            android:contentDescription="More"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:onClick="morePopup"/>
+            <ImageButton
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/more_vert"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:id="@+id/more_vert"
+                android:onClick="morevertPopup" />
         </RelativeLayout>
 
     <ScrollView
@@ -144,17 +145,13 @@
             android:id="@+id/reply_button"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@color/white"
+            android:background="@drawable/nav_item_background"
             android:drawableStart="@drawable/turn_left"
             android:text="@string/Reply"
             android:textAlignment="textStart"
             android:drawablePadding="15dp"
             android:textSize="15dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.64"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.711" />
+            app:layout_constraintBottom_toBottomOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

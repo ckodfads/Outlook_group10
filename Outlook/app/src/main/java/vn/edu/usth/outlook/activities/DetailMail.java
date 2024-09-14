@@ -80,9 +80,8 @@ public class DetailMail extends AppCompatActivity implements PopupMenu.OnMenuIte
         popupButton3.setOnClickListener(this::morevertPopup);
 
         // swipe to left or right
-        LinearLayout swappable = findViewById(R.id.detail1);
+        LinearLayout swappable = findViewById(R.id.detailmail);
         swappable.setOnTouchListener(new OnSwipeTouchListener(DetailMail.this) {
-
             public void onSwipeRight() {
                 // Swipe right
                 if (currentIndex[0] > 0) {
@@ -111,9 +110,9 @@ public class DetailMail extends AppCompatActivity implements PopupMenu.OnMenuIte
 
 
 //        // Add email data to the list
-        emailSenderList.add(new Email_Sender("user1@example.com", "Do sth", "Subject 1", "Content of email 1"));
-        emailSenderList.add(new Email_Sender("user2@example.com", "Make sth", "Subject 2", "Content of email 2"));
-        emailSenderList.add(new Email_Sender("user3@example.com", "Play sth", "Subject 3", "Content of email 3"));
+        emailSenderList.add(new Email_Sender("user1@example.com", "Do sth", "Subject 1", "me"));
+        emailSenderList.add(new Email_Sender("user2@example.com", "Make sth", "Subject 2", "Long"));
+        emailSenderList.add(new Email_Sender("user3@example.com", "Play sth", "Subject 3", "me"));
 
 
         return emailSenderList;

@@ -80,7 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:paddingVertical="12dp"
-            android:background="@color/background_all"
+            android:background="@drawable/nav_item_background"
             android:text="@string/reset_account"
             android:textColor="@android:color/holo_blue_dark" />
 
@@ -89,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:paddingVertical="12dp"
-            android:background="@color/background_all"
+            android:background="@drawable/nav_item_background"
             android:text="@string/remove_account"
             android:textColor="@android:color/holo_red_dark" />
     </LinearLayout>

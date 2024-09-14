@@ -24,5 +24,6 @@
     <string name="reset_account">reset account</string>
     <string name="remove_account">remove account</string>
     <string name="avatar">avatar</string>
+    <string name="New_mail">New mail</string>
 
 </resources>

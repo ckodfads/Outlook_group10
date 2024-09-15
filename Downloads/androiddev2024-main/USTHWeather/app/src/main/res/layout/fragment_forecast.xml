@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ForecastFragment">
+
+    <LinearLayout
+        android:id="@+id/forecast_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:background="#FF0000FF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/Mon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Monday"
+            android:textColor="@android:color/white"
+            android:layout_weight="1"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/weather_icon1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/cloud" />
+
+        <TextView
+            android:id="@+id/forMOn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="24°C - 31°C"
+            android:textColor="@android:color/white"
+            android:layout_weight="2"
+            android:textSize="18sp"
+            android:gravity="right" />
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/Tue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tuesday"
+                android:textColor="@android:color/white"
+                android:layout_weight="1"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/weather_icon2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/cloud" />
+
+            <TextView
+                android:id="@+id/forTue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="24°C - 31°C"
+                android:textColor="@android:color/white"
+                android:layout_weight="2"
+                android:textSize="18sp"
+                android:gravity="right" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/Wed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wednesday"
+                android:textColor="@android:color/white"
+                android:layout_weight="1"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/weather_icon3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/cloud" />
+
+            <TextView
+                android:id="@+id/forWed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="24°C - 31°C"
+                android:textColor="@android:color/white"
+                android:layout_weight="2"
+                android:textSize="18sp"
+                android:gravity="right" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/Thu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thursday"
+                android:textColor="@android:color/white"
+                android:layout_weight="1"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/weather_icon4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/cloud" />
+
+            <TextView
+                android:id="@+id/forThu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="24°C - 31°C"
+                android:textColor="@android:color/white"
+                android:layout_weight="2"
+                android:textSize="18sp"
+                android:gravity="right" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/Fri"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Friday"
+                android:textColor="@android:color/white"
+                android:layout_weight="1"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/weather_icon5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/cloud" />
+
+            <TextView
+                android:id="@+id/forFri"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="24°C - 31°C"
+                android:textColor="@android:color/white"
+                android:layout_weight="2"
+                android:textSize="18sp"
+                android:gravity="right" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/Sat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Saturday"
+                android:textColor="@android:color/white"
+                android:layout_weight="1"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/weather_icon6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/cloud" />
+
+            <TextView
+                android:id="@+id/forSat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="24°C - 31°C"
+                android:textColor="@android:color/white"
+                android:layout_weight="2"
+                android:textSize="18sp"
+                android:gravity="right" />
+
+        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/Sun"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sunday"
+                    android:textColor="@android:color/white"
+                    android:layout_weight="1"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/weather_icon7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/cloud" />
+
+                <TextView
+                    android:id="@+id/forSun"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="24°C - 31°C"
+                    android:textColor="@android:color/white"
+                    android:layout_weight="2"
+                    android:textSize="18sp"
+                    android:gravity="right" />
+        </LinearLayout>
+
+</LinearLayout>
+
+</FrameLayout>

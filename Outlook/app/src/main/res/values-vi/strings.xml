@@ -27,6 +27,7 @@
     <string name="remove_account">loại bỏ tài khoản</string>
     <string name="avatar">ảnh đại diện</string>
     <string name="New_mail">Thư mới</string>
+<<<<<<< HEAD
     <string name="Name">Tên</string>
     <string name="Head_Mail">Tiêu đề</string>
     <string name="Content">Nội dung</string>
@@ -66,4 +67,9 @@
     <string name="Forward">Chuyển tiếp</string>
     <string name="print">In</string>
     <string name="Reply">Phản hồi</string>
+=======
+    <string name="you_have_no_contacts_yet">Không có liên hệ</string>
+    <string name="No_new_notifications">Không có thông báo mới</string>
+    <string name="Please_check_back_later">Vui lòng kiểm tra lại sau</string>
+>>>>>>> testing
 </resources>

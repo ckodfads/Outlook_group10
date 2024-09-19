@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:context=".fragment.SettingsFragment">
 
     <LinearLayout
@@ -11,12 +12,11 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-
+        <!-- Relative Layout for Avatar and User Info -->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="350dp"
             android:orientation="vertical">
-
 
             <ImageView
                 android:layout_width="200dp"
@@ -25,7 +25,7 @@
                 android:layout_marginTop="50dp"
                 android:contentDescription="@string/avatar"
                 android:src="@drawable/user"
-                android:id="@+id/ava"/>
+                android:id="@+id/ava" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -35,8 +35,7 @@
                 android:textStyle="bold"
                 android:layout_below="@+id/ava"
                 android:layout_centerHorizontal="true"
-                android:id="@+id/text1"
-                />
+                android:id="@+id/text1" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -44,35 +43,75 @@
                 android:text="@string/nhutunglam1_gmail_com"
                 android:textSize="14sp"
                 android:layout_below="@+id/text1"
-                android:layout_centerHorizontal="true"/>
+                android:layout_centerHorizontal="true" />
 
         </RelativeLayout>
 
-        <!-- Settings Options -->
+        <!-- Mail Calendar Option -->
         <TextView
+            android:id="@+id/mail_calendar_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingVertical="8dp"
             android:text="@string/mail_calendar" />
 
-        <androidx.appcompat.widget.SwitchCompat
+        <!-- Block External Images Row -->
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/block_external_images"
-            android:drawablePadding="60dp"/>
+            android:padding="16dp">
 
+            <!-- TextView Block External Images -->
+
+            <!-- SwitchCompat -->
+            <TextView
+                android:id="@+id/block_external_images_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/block_external_images"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/block_external_images_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="8dp" />
+
+            <!-- Icon (Question Mark) next to the SwitchCompat -->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="Icon"
+                android:src="@drawable/ic_question_mark"
+                app:layout_constraintEnd_toStartOf="@+id/block_external_images_switch"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Report Spam Option -->
         <TextView
+            android:id="@+id/report_spam_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingVertical="8dp"
             android:text="@string/report_spam" />
 
+        <!-- Categories -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingVertical="12dp"
             android:text="@string/categories"
-            android:drawablePadding="60dp"/>
+            android:drawablePadding="60dp" />
 
         <!-- Action Buttons -->
         <androidx.appcompat.widget.AppCompatButton
@@ -82,7 +121,9 @@
             android:paddingVertical="12dp"
             android:background="@drawable/nav_item_background"
             android:text="@string/reset_account"
-            android:textColor="@android:color/holo_blue_dark" />
+            android:textColor="@android:color/holo_blue_dark"
+            android:drawableStart="@drawable/ic_reset"
+            android:tint="@android:color/holo_blue_dark"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="match_parent"
@@ -91,7 +132,10 @@
             android:paddingVertical="12dp"
             android:background="@drawable/nav_item_background"
             android:text="@string/remove_account"
-            android:textColor="@android:color/holo_red_dark" />
+            android:textColor="@android:color/holo_red_dark"
+            android:drawableStart="@drawable/ic_remove"
+            android:tint="@android:color/holo_red_dark"/>
+
     </LinearLayout>
 
 </LinearLayout>

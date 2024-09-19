@@ -24,6 +24,7 @@ app:layout_behavior="@string/appbar_scrolling_view_behavior">
     android:layout_height="wrap_content"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:background="@color/blue_theme"
+    android:accessibilityPaneTitle="Inbox"
     >
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -40,26 +41,29 @@ app:layout_behavior="@string/appbar_scrolling_view_behavior">
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:navigationIcon="@drawable/ggicon">
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="end"
                 android:orientation="horizontal"
                 android:paddingEnd="16dp"
                 android:layout_gravity="end">
+
                 <!-- Icon to trigger the SearchView expansion -->
-                <ImageView
+                <ImageButton
                     android:id="@+id/notification_icon"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:padding="10dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@color/blue_theme"
+                    app:iconTint="@color/white"
+                    android:layout_toLeftOf="@+id/search_icon"
+                    android:paddingVertical="5dp"
+                    android:scaleType="centerInside"
+                    android:layout_centerVertical="true"
                     android:src="@drawable/ic_notification"
-                    android:layout_alignParentStart="true"
-                    android:layout_gravity="start"
                     android:contentDescription="Notification"/>
 
                 <!-- SearchView (initially hidden) -->
-
                 <ImageView
                     android:id="@+id/search_icon"
                     android:layout_width="60dp"
@@ -76,15 +80,16 @@ app:layout_behavior="@string/appbar_scrolling_view_behavior">
                     android:id="@+id/search_view"
                     android:layout_width="300dp"
                     android:layout_height="48dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_centerHorizontal="true"
+                    android:layout_marginEnd="20dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
                     android:visibility="gone"
                     app:queryHint="@string/search_in_mail"
                     app:iconifiedByDefault="false"
                     android:iconifiedByDefault="false"
                     app:searchIcon="@null"/>
 
-            </LinearLayout>
+            </RelativeLayout>
         </com.google.android.material.appbar.MaterialToolbar>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.appbar.AppBarLayout>
@@ -101,7 +106,6 @@ app:layout_behavior="@string/appbar_scrolling_view_behavior">
         android:id="@+id/recycler_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible"
         android:layout_marginTop="20dp"/>
 
 
@@ -132,7 +136,6 @@ app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
     android:text="New mail"
-    android:textAllCaps="false"
     android:textColor="@color/white"
     android:backgroundTint="@color/blue_theme"
     app:icon="@drawable/ic_compose"

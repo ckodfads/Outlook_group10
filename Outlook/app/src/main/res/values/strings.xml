@@ -25,5 +25,8 @@
     <string name="remove_account">remove account</string>
     <string name="avatar">avatar</string>
     <string name="New_mail">New mail</string>
+    <string name="you_have_no_contacts_yet">You have no contacts yet</string>
+    <string name="No_new_notifications">No new notifications</string>
+    <string name="Please_check_back_later">Please check back later</string>
 
 </resources>

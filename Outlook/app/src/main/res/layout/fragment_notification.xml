@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.NotificationFragment">
+    android:orientation="vertical"
+    android:id="@+id/notification"
+    android:background="@color/background_all">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingVertical="20dp"
         android:id="@+id/header"
-        android:background="@color/blue_theme">
+        tools:ignore="MissingConstraints">
+
         <ImageButton
             android:id="@+id/back_icon"
             android:layout_width="24dp"
@@ -18,6 +22,59 @@
             android:layout_centerVertical="true"
             android:background="@drawable/row_back"
             android:layout_marginLeft="12dp"/>
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Notifications"
+            android:layout_centerInParent="true"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/nothinginNotifications"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/ic_bell"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="150dp"
+            >
+        </ImageView>
+
+        <TextView
+            android:id="@+id/firstLineInNotifications"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No new notifications"
+            android:textSize="17sp"
+            android:textColor="@color/black"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/nothinginNotifications"
+            android:fontFamily="@font/abadi_mt_bold"
+            >
+        </TextView>
+        <TextView
+            android:id="@+id/secondLineInArchive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Please check back later"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:layout_below="@+id/firstLineInNotifications"
+            android:layout_marginTop="10dp"
+            >
+        </TextView>
     </RelativeLayout>
 
-</FrameLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

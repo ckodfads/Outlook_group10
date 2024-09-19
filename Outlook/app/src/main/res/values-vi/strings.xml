@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Outlook</string>
+    <string name="navigation_drawer_open">Mở thanh điều hướng</string>
+    <string name="navigation_drawer_close">Đóng thanh điều hướng</string>
+    <string name="calendar">lịch</string>
+    <string name="contact">danh bạ</string>
+    <string name="home">trang chủ</string>
+    <string name="meet">cuộc họp</string>
+    <string name="new_contact">liên hệ mới</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search_in_mail">tìm kiếm thư</string>
+    <string name="compose">soạn thảo</string>
+    <string name="search_in_chat_and_spaces">tìm kếm hội thoại và không gian\n</string>
+    <string name="new_space">không gian mới</string>
+    <string name="app_contact">app contact</string>
+    <string name="Reply">Reply</string>
+    <string name="lam_nhu">lam nhu</string>
+    <string name="nhutunglam1_gmail_com">nhutunglam1@gmail.com</string>
+    <string name="mail_calendar">lịch trong thư</string>
+    <string name="block_external_images">chặn hình ảnh</string>
+    <string name="report_spam">báo cáo spam</string>
+    <string name="categories">thể loại</string>
+    <string name="reset_account">khởi động lại tài khoản</string>
+    <string name="remove_account">loại bỏ tài khoản</string>
+    <string name="avatar">ảnh đại diện</string>
+    <string name="New_mail">Thư mới</string>
+</resources>

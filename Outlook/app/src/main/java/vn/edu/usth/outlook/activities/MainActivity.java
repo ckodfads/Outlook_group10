@@ -118,6 +118,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
             } else {
                 searchView.setVisibility(View.GONE);
                 searchView.clearFocus();
+                notificationIcon.setVisibility(View.VISIBLE);
             }
         });
         searchIcon.setOnTouchListener((v, event) -> {

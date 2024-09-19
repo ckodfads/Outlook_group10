@@ -17,7 +17,6 @@
     <string name="search_in_chat_and_spaces">tìm kếm hội thoại và không gian\n</string>
     <string name="new_space">không gian mới</string>
     <string name="app_contact">app contact</string>
-    <string name="Reply">Reply</string>
     <string name="lam_nhu">lam nhu</string>
     <string name="nhutunglam1_gmail_com">nhutunglam1@gmail.com</string>
     <string name="mail_calendar">lịch trong thư</string>
@@ -66,4 +65,5 @@
     <string name="snooze">Hàng chờ</string>
     <string name="Forward">Chuyển tiếp</string>
     <string name="print">In</string>
+    <string name="Reply">Phản hồi</string>
 </resources>

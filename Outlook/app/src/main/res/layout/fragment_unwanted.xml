@@ -12,7 +12,7 @@
             android:id="@+id/nothinginunwanted"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:src="@drawable/nothing_in_draft"
+            android:src="@drawable/nothing_in_conversation_history"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="150dp"
             >

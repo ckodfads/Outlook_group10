@@ -1,14 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.AppContactFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+<TextView
+    android:id="@+id/otherText1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/pin"
+    android:textColor="@color/blue_character"
+    android:textSize="33sp"
+    android:textStyle="bold"
+    android:layout_marginLeft="20sp"
+    >
+</TextView>
+    <RelativeLayout
+        android:id="@+id/item1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_blank_fragment" />
-
-</FrameLayout>
+        android:layout_below="@id/otherText1"
+        >
+        <ImageView
+            android:id="@+id/picture1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_letter"
+            android:layout_margin="20sp"
+            android:layout_centerVertical="true"
+            >
+        </ImageView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="33sp"
+            android:text="@string/mail"
+            android:layout_margin="20sp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/picture1"
+            >
+        </TextView>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/item2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/item1"
+        >
+        <ImageView
+            android:id="@+id/picture2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_calendar"
+            android:layout_marginHorizontal="20sp"
+            android:layout_centerVertical="true"
+            >
+        </ImageView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="33sp"
+            android:text="@string/calendar"
+            android:layout_margin="20sp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/picture2"
+            >
+        </TextView>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/item3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/item2"
+        >
+        <ImageView
+            android:id="@+id/picture3"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_letter"
+            android:layout_margin="20sp"
+            android:layout_centerVertical="true"
+            >
+        </ImageView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="33sp"
+            android:text="@string/file"
+            android:layout_margin="20sp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/picture3"
+            >
+        </TextView>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/item4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/item3"
+        />
+        <ImageView
+            android:id="@+id/picture4"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/contact"
+            android:layout_margin="20sp"
+            android:layout_centerVertical="true"
+            >
+        </ImageView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="33sp"
+            android:text="@string/contact"
+            android:layout_margin="20sp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/picture4"
+            >
+        </TextView>
+    </RelativeLayout>
+</RelativeLayout>

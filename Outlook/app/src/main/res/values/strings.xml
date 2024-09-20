@@ -19,7 +19,7 @@
     <string name="Reply">Reply</string>
     <string name="lam_nhu">lam nhu</string>
     <string name="nhutunglam1_gmail_com">nhutunglam1@gmail.com</string>
-    <string name="mail_calendar">mail calendar</string>
+    <string name="mail_calendar">Mail &amp; Calendar</string>
     <string name="block_external_images">block external images</string>
     <string name="report_spam">report spam</string>
     <string name="categories">categories</string>
@@ -27,7 +27,6 @@
     <string name="remove_account">remove account</string>
     <string name="avatar">avatar</string>
     <string name="New_mail">New mail</string>
-<<<<<<< HEAD
     <string name="Name">Name</string>
     <string name="Head_Mail">Head Mail</string>
     <string name="Content">Content</string>
@@ -70,6 +69,10 @@
     <string name="you_have_no_contacts_yet">You have no contacts yet</string>
     <string name="No_new_notifications">No new notifications</string>
     <string name="Please_check_back_later">Please check back later</string>
+    <string name="question_con">Question con</string>
+    <string name="account_description">Account Description</string>
+    <string name="try_resetting_the_account_if_you_have_sync_issues">Try resetting the account if you have sync issues</string>
+    <string name="removing_this_account_from_the_app_will_delete_any_local_data_stored_in_the_app">Removing this account from the app will delete any local data stored in the app</string>
 
->>>>>>> testing
+    >>>>>>> testing
 </resources>

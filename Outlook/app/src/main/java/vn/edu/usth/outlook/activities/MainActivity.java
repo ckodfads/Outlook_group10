@@ -257,7 +257,6 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
                 if (itemId == R.id.home) {
                     recyclerView.setVisibility(View.VISIBLE);
                     notificationIcon.setVisibility(View.VISIBLE);
-                    searchView.setVisibility(View.INVISIBLE);
                     searchView.setQueryHint(getString(R.string.search_in_mail));
                     compose_button.setText(R.string.New_mail);
                     compose_button.setIconResource(R.drawable.ic_compose);
@@ -267,7 +266,6 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
                 } else if (itemId == R.id.contact) {
                     recyclerView.setVisibility(View.GONE);
                     notificationIcon.setVisibility(View.GONE);
-                    searchView.setVisibility(View.INVISIBLE);
                     searchView.setQueryHint(getString(R.string.search_in_chat_and_spaces));
                     compose_button.setIconResource(R.drawable.plus_compose);
                     compose_button.setText(R.string.new_contact);
@@ -277,7 +275,6 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
                 } else if (itemId == R.id.calendar) {
                     recyclerView.setVisibility(View.GONE);
                     notificationIcon.setVisibility(View.GONE);
-                    searchView.setVisibility(View.GONE);
                     compose_button.setIconResource(R.drawable.plus_compose);
                     compose_button.setVisibility(View.VISIBLE);
                     compose_button.setText(R.string.new_contact);
@@ -287,7 +284,6 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
                     currentFragment = new AppContactFragment();
                     recyclerView.setVisibility(View.GONE);
                     notificationIcon.setVisibility(View.GONE);
-                    searchView.setVisibility(View.GONE);
                     compose_button.setVisibility(View.GONE);
                     openFragment(new AppContactFragment(),"App Contact");
                     return true;

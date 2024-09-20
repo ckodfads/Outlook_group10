@@ -94,7 +94,12 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
         searchView = findViewById(R.id.search_view);
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.ggicon);
+        // Lấy NavigationView và header view
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
 
+        // Lấy nút đóng từ header view
+        ImageButton closeBtn = headerView.findViewById(R.id.btn_close_nav);
         notificationIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -142,15 +147,25 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
                 return true;
             }
         });
-        // Enable the Menu Icon to toggle the Menu Bar
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        closeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Đóng Navigation Drawer khi nhấn nút
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                // Thay đổi biểu tượng khi mở Drawer
+                getSupportActionBar().setHomeAsUpIndicator(R.drawable.ggicon);
+            }
+        };
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-
-
-        View rootView = findViewById(android.R.id.content);
-        keyboardVisibilityUtils = new KeyboardVisibilityUtils(rootView, this);
-
+        // Đặt biểu tượng mong muốn ngay từ đầu (khi khởi động)
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ggicon);
 
         // Set a click listener for the navigation button in the toolbar
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -331,18 +346,6 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
 
 
     }
-
-
-    @Override
-    public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen((GravityCompat.START))) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
-
-
     // Display items in RecyclerView
     private void displayItems() {
         recyclerView = findViewById(R.id.recycler_main);
@@ -365,8 +368,6 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
     ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
     itemTouchHelper.attachToRecyclerView(recyclerView);
     }
-
-
     //Swipe to do delete and archive
     Email_Sender deletedMail = null;
     List<String> archivedMail = new ArrayList<>();
@@ -400,23 +401,21 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
                             }).show();
                     break;
                 case ItemTouchHelper.RIGHT:
-                    final Email_Sender email = emailList.get(position); // Corrected variable name
-                    archivedMail.add(String.valueOf(email)); // Use the correct list name
+                    final Email_Sender email = emailList.get(position);
+
+                    archivedMail.add(String.valueOf(email));
                     emailList.remove(position);
                     customAdapter.notifyItemRemoved(position);
 
-                    Snackbar make = Snackbar.make(recyclerView, email + ", Archived.", Snackbar.LENGTH_LONG);
-                    make.setAction("Undo", new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            archivedMail.remove(archivedMail.lastIndexOf(email));
-                            emailList.add(position, email);
-                            customAdapter.notifyItemInserted(position);
-                        }
-                    });
-
-                    make.show();
-
+                    Snackbar.make(recyclerView,"Conversation Archived.", Snackbar.LENGTH_LONG)
+                            .setAction("Undo", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    archivedMail.remove(email);
+                                    emailList.add(position, email);
+                                    customAdapter.notifyItemInserted(position);
+                                }
+                            }).show();
                     break;
             }
 
@@ -438,14 +437,10 @@ public class MainActivity extends AppCompatActivity implements SelectListener, K
     public void onLongItemClick(int position) {
 
     }
-
-
     private void openFragment(Fragment fragment,String title) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, fragment);
         transaction.commit();
-
-
         // Set the toolbar title dynamically based on the fragment being opened
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle(title);

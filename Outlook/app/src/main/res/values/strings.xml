@@ -8,6 +8,7 @@
     <string name="home">Home</string>
     <string name="meet">Meet</string>
     <string name="file">File</string>
+    <string name="Email">Email</string>
     <string name="new_contact">New contact</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -65,7 +66,8 @@
     <string name="snooze">Snooze</string>
     <string name="Forward">Forward</string>
     <string name="print">Print</string>
-=======
+    <string name="pinned">Pinned</string>
+    <string name="more_apps">More Apps</string>
     <string name="you_have_no_contacts_yet">You have no contacts yet</string>
     <string name="No_new_notifications">No new notifications</string>
     <string name="Please_check_back_later">Please check back later</string>

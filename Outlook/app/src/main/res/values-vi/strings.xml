@@ -20,7 +20,7 @@
     <string name="app_contact">app contact</string>
     <string name="lam_nhu">lam nhu</string>
     <string name="nhutunglam1_gmail_com">nhutunglam1@gmail.com</string>
-    <string name="mail_calendar">lịch và thư</string>
+    <string name="mail_calendar">Thư &amp; Lịch</string>
     <string name="block_external_images">chặn hình ảnh</string>
     <string name="report_spam">báo cáo spam</string>
     <string name="categories">thể loại</string>
@@ -28,7 +28,6 @@
     <string name="remove_account">loại bỏ tài khoản</string>
     <string name="avatar">ảnh đại diện</string>
     <string name="New_mail">Thư mới</string>
-
     <string name="Name">Tên</string>
     <string name="Head_Mail">Tiêu đề</string>
     <string name="Content">Nội dung</string>
@@ -68,9 +67,17 @@
     <string name="Forward">Chuyển tiếp</string>
     <string name="print">In</string>
     <string name="Reply">Phản hồi</string>
+
     <string name="pinned">Đã ghim</string>
     <string name="more_apps">Các ứng dụng khác</string>
 <!--separate-->
+
+    <string name="question_con">Question con</string>
+    <string name="account_description">Account Description</string>
+    <string name="try_resetting_the_account_if_you_have_sync_issues">Try resetting the account if you have sync issues</string>
+
+    =======
+
     <string name="you_have_no_contacts_yet">Không có liên hệ</string>
     <string name="No_new_notifications">Không có thông báo mới</string>
     <string name="Please_check_back_later">Vui lòng kiểm tra lại sau</string>
